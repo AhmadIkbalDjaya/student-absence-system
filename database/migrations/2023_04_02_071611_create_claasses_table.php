@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('claasses', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('level')->unsigned()->default(0);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->enum('major', ["IPA", "IPS"]);
+            $table->enum('class_level', [10,11,12]);
+            $table->string('class_name');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('claasses');
     }
 };
