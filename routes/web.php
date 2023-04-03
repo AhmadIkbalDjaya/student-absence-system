@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller(LoginController::class)->group(function () {
+    Route::get('login', 'login')->name('login');
+    Route::post('login', 'authenticate');
+    Route::post('logout', 'logout');
+});
 
 Route::prefix('admin')->group(function () {
     Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
