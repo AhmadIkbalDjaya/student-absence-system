@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\SemesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::prefix('admin')->group(function () {
+    Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
+    Route::resource('teacher', TeacherController::class);
 });
