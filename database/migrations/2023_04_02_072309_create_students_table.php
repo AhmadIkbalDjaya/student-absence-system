@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Claass::class);
             $table->string('name');
-            $table->string('nis');
+            $table->string('nis')->unique();
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->integer('parent_phone');
             $table->timestamps();

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ClaassController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\SemesterController;
 
@@ -23,4 +26,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
     Route::resource('teacher', TeacherController::class);
+    Route::resource('claass', ClaassController::class)->except(["show"]);
+    Route::resource('student', StudentController::class);
+    Route::resource('course', CourseController::class);
 });
