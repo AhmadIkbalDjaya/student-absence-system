@@ -19,7 +19,7 @@ class TeacherController extends Controller
     {
         return view("admin.teacher.index", [
             "title" => "Guru",
-            "teachers" => Teacher::all(),
+            "teachers" => Teacher::latest()->get(),
         ]);
     }
 
@@ -44,20 +44,20 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "username" => "required|unique:users",
+            "username" => "required|unique:users|min:3",
             "password" => "required|min:8",
-            "name" => "required",
+            "name" => "required|min:3",
             "email" => "required|email|unique:users",
             "phone" => "required|numeric|digits_between:10,12",
             "gender" => "required|in:Laki-laki,Perempuan",
         ]);
+        // dd("Valid");
         $validated["password"] = Hash::make($validated["password"]);
         $new_user = [
             "username" => $validated["username"],
             "password" => $validated["password"],
             "name" => $validated["name"],
             "email" => $validated["email"],
-            "level" => $validated["level"],
         ];
         $user = User::create($new_user);
         $new_teacher = [
@@ -106,11 +106,12 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
+        $user_id = $teacher->user->id;
         $validated = $request->validate([
-            "username" => "required|unique:users,username,$teacher->id",
+            "username" => "required|unique:users,username,$user_id",
             "password" => "nullable|min:8",
             "name" => "required",
-            "email" => "required|email|unique:users,email,$teacher->id",
+            "email" => "required|email|unique:users,email,$user_id",
             "phone" => "required|numeric|digits_between:10,12",
             "gender" => "required|in:Laki-laki,Perempuan",
         ]);
@@ -124,7 +125,6 @@ class TeacherController extends Controller
             "username" => $validated["username"],
             "name" => $validated["name"],
             "email" => $validated["email"],
-            "level" => $validated["level"],
         ];
         if($request->password) {
             $update_user["password"] = $validated["password"];
@@ -148,6 +148,7 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
+        User::where('id', $teacher->user->id)->delete();
         $teacher->delete();
         return redirect('/admin/teacher');
     }
