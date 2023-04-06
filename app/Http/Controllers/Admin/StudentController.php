@@ -18,7 +18,7 @@ class StudentController extends Controller
     {
         return view("admin.student.index", [
             "title" => "Siswa",
-            "students" => Student::all(),
+            "students" => Student::latest()->get(),
         ]);
     }
 
@@ -50,7 +50,7 @@ class StudentController extends Controller
             "parent_phone" => "required|numeric|digits_between:10,12",
             "claass_id" => "required|exists:claasses,id"
         ]);
-        Student::crete($validated);
+        Student::create($validated);
         return redirect('/admin/student');
     }
 
@@ -93,8 +93,8 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $validated = $request->validate([
-            "name" => "required",
             "nis" => "required|unique:students,nis,$student->id",
+            "name" => "required",
             "gender" => "required|in:Laki-laki,Perempuan",
             "parent_phone" => "required|numeric|digits_between:10,12",
             "claass_id" => "required|exists:claasses,id"

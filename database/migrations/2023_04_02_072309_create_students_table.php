@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nis')->unique();
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
-            $table->integer('parent_phone');
+            $table->string('parent_phone');
             $table->timestamps();
         });
     }

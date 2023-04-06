@@ -15,7 +15,7 @@
               <div class="card">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="dasboardUser.html"><i class="bi bi-house-door"></i> Beranda</a>
+                    <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-door"></i> Beranda</a>
                   </li>
                 </div>
               </div>
@@ -36,14 +36,14 @@
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="kelas.html"><i class="bi bi-person"></i> Siswa</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/student"><i class="bi bi-person"></i> Siswa</a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="rekapan.html"><i class="bi bi-hospital"></i> Kelas</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/claass"><i class="bi bi-hospital"></i> Kelas</a>
                   </li>
                 </div>
               </div>
