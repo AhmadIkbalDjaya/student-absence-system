@@ -94,12 +94,13 @@ class DatabaseSeeder extends Seeder
         Semester::create([
             "start_year" => "2020",
             "end_year" => "2021",
-            "odd_even" => "1"
+            "odd_even" => "1",
+            "is_active" => "1",
         ]);
         Semester::create([
-            "start_year" => "2020",
-            "end_year" => "2021",
-            "odd_even" => "2"
+            "start_year" => "2021",
+            "end_year" => "2022",
+            "odd_even" => "2",
         ]);
 
 

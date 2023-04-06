@@ -31,6 +31,7 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
+    Route::post("semester/change", [SemesterController::class, 'changeSemester']);
     Route::resource('teacher', TeacherController::class);
     Route::resource('claass', ClaassController::class)->except(["show"]);
     Route::resource('student', StudentController::class);

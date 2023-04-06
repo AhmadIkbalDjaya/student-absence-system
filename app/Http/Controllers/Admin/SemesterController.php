@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class SemesterController extends Controller
 {
+
+    public function changeSemester(Request $request)
+    {
+        Semester::query()->update(["is_active" => "0"]);
+        Semester::where("id", $request->active_id)->update(["is_active" => "1"]);
+        return back();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,7 @@ class SemesterController extends Controller
     {
         return view('admin.semester.index', [
             "title" => "Semester",
-            "semesters" => Semester::all(),
+            "semesters" => Semester::latest()->get(),
         ]);
     }
 
@@ -42,11 +49,12 @@ class SemesterController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "start_year" => "required|",
-            "odd_even" => "required|",
+            "start_year" => "required",
+            "odd_even" => "required|in:1,2",
         ]);
+        $validated["end_year"] = $validated["start_year"] + 1;
 
-        // Semester::create($validated);
+        Semester::create($validated);
         return redirect('/admin/semester');
     }
 

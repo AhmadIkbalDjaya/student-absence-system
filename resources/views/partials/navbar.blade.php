@@ -22,6 +22,13 @@
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/semester"><i class="bi bi-people"></i> Semester</a>
+                  </li>
+                </div>
+              </div>
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/admin/teacher"><i class="bi bi-people"></i> Guru</a>
                   </li>
                 </div>

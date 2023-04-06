@@ -5,7 +5,7 @@
         <img src="/images/logo.png" alt="bg" class="img-fluid" />
       </div>
       <div class="col-md text-white">
-        <h2>SISTEM ABSENSI SMA NEGRI 17 GOWA</h2>
+        <h2>SISTEM ABSENSI SMA NEGERI 17 GOWA</h2>
       </div>
     </div>
   </div>
