@@ -18,7 +18,7 @@ class ClaassController extends Controller
     {
         return view("admin.claass.index", [
             "title" => "Kelas",
-            "claasses" => Claass::all(),
+            "claasses" => Claass::orderBy("class_level")->orderBy("major")->get(),
         ]);
     }
 
@@ -44,8 +44,8 @@ class ClaassController extends Controller
     {
         $validated = $request->validate([
             "major" => "required|in:IPA,IPS",
-            "claass_level" => "required|in:10,11,12",
-            "claass_name" => "required|",
+            "class_level" => "required|in:10,11,12",
+            "class_name" => "required",
         ]);
         Claass::create($validated);
         return redirect('/admin/claass');
