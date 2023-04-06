@@ -72,7 +72,7 @@ class ClaassController extends Controller
     {
         return view("admin.claass.edit", [
             "title" => "Edit Kelas",
-            '"claass' => $claass,
+            "claass" => $claass,
         ]);
     }
 
@@ -87,8 +87,8 @@ class ClaassController extends Controller
     {
         $validated = $request->validate([
             "major" => "required|in:IPA,IPS",
-            "claass_level" => "required|in:10,11,12",
-            "claass_name" => "required|",
+            "class_level" => "required|in:10,11,12",
+            "class_name" => "required",
         ]);
         $claass->update($validated);
         return redirect('/admin/claass');

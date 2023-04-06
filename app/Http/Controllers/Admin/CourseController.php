@@ -35,7 +35,7 @@ class CourseController extends Controller
     {
         return view("admin.course.create", [
             "title" => "Tambah Mata Pelajaran",
-            "claases" => Claass::all(),
+            "claasses" => Claass::all(),
             "teachers" => Teacher::all(),
             "semesters" => Semester::all(),
         ]);
@@ -91,7 +91,8 @@ class CourseController extends Controller
     {
         return view("admin.course.edit", [
             "title" => "Edit Mata Pelajaran",
-            "claases" => Claass::all(),
+            "course" => $course,
+            "claasses" => Claass::all(),
             "teachers" => Teacher::all(),
             "semesters" => Semester::all(),
         ]);

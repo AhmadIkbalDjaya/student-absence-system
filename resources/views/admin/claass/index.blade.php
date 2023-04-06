@@ -41,7 +41,7 @@
                     <td>{{ $claass->class_level }}</td>
                     <td>{{ $claass->major }}</td>
                     <td>
-                      <a href="editKelas.html"><span class="badge text-bg-warning">Edit Kelas</span></a>
+                      <a href="/admin/claass/{{ $claass->id }}/edit"><span class="badge text-bg-warning">Edit Kelas</span></a>
                       <form action="/admin/claass/{{ $claass->id }}" method="post" class="d-inline">
                         @method("delete")
                         @csrf

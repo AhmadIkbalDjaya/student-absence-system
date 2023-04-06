@@ -11,7 +11,7 @@
     <div class="container-fluid card shadow-lg">
       <div class="row mt-3">
         <div class="col-2">
-          <a href="kelas.html"><button type="button" class="btn btn-primary"><i class="bi bi-arrow-left-circle"></i></button></a>
+          <a href="kelas.html"><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button></a>
         </div>
         <div class="col-md-12 text-center">
           <h3>Tambah Kelas</h3>

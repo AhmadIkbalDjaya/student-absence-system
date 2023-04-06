@@ -16,7 +16,7 @@
         <p>Tambah, Edit atau hapus Guru</p>
       </div>
       <div class="col-md-4">
-        <a href="/admin/teacher/create" class="btn btn-primary">Tambah Guru</a>
+        <a href="/admin/teacher/create" class="btn btn-success">Tambah Guru</a>
       </div>
     </div>
   </div>

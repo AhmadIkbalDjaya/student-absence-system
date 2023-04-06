@@ -61,7 +61,7 @@
             </div>
           </div>
           <div>
-            <button type="button" class="btn btn-primary" style="--bs-btn-padding-y: 0.25rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 0.75rem"><a href="/admin/teacher">Back</a></button>
+            <button type="button" class="btn btn-success" style="--bs-btn-padding-y: 0.25rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 0.75rem"><a href="/admin/teacher">Back</a></button>
           </div>
         </div>
       </div>

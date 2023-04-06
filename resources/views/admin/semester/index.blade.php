@@ -16,7 +16,7 @@
         <p>Tambah, Edit atau hapus Semester</p>
       </div>
       <div class="col-md-4">
-        <a href="/admin/semester/create"><button type="button" class="btn btn-primary">Tambah Semester</button></a>
+        <a href="/admin/semester/create"><button type="button" class="btn btn-success">Tambah Semester</button></a>
       </div>
       <div class="col-md-6 my-2">
         <form action="/admin/semester/change" method="post">
