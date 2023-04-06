@@ -1,9 +1,5 @@
 @extends('layouts.main')
 
-@push('style')
-    <link rel="stylesheet" href="/css/semester/index.css">
-@endpush
-
 @section('body')
 @include('partials.navbar')
 @include('partials.header')
@@ -40,6 +36,8 @@
     </div>
   </div>
 </div>
+
+@include('partials.alerts')
 
 <div class="section">
   <div class="container-fluid card shadow my-3">

@@ -18,6 +18,9 @@
     </div>
   </div>
   <div id="liveAlertPlaceholder"></div>
+
+  @include('partials.alerts')
+
   <div class="section">
     <div class="container-fluid card shadow my-3">
       <div class="row">

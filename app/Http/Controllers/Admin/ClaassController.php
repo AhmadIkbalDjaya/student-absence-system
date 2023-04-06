@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Claass;
+use App\Models\Course;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use PhpParser\Builder\Class_;
+use App\Http\Controllers\Controller;
 
 class ClaassController extends Controller
 {
@@ -48,7 +49,7 @@ class ClaassController extends Controller
             "class_name" => "required",
         ]);
         Claass::create($validated);
-        return redirect('/admin/claass');
+        return redirect('/admin/claass')->with('success', "Kelas Berhasil Ditambahkan");
     }
 
     /**
@@ -91,7 +92,7 @@ class ClaassController extends Controller
             "class_name" => "required",
         ]);
         $claass->update($validated);
-        return redirect('/admin/claass');
+        return redirect('/admin/claass')->with('success', "Kelas Berhasil Di Update");
     }
 
     /**
@@ -102,7 +103,11 @@ class ClaassController extends Controller
      */
     public function destroy(Claass $claass)
     {
+        $use_count = Course::where("claass_id", $claass->id)->count();
+        if($use_count > 0){
+            return back()->with('failed', "Kelas tidak dapat dihapus karena digunakan di $use_count Mata Pelajaran");
+        }
         $claass->delete();
-        return redirect('/admin/claass');
+        return redirect('/admin/claass')->with('success', "Kelas Berhasil Dihapus");
     }
 }

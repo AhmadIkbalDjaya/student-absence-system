@@ -22,13 +22,6 @@
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/semester"><i class="bi bi-people"></i> Semester</a>
-                  </li>
-                </div>
-              </div>
-              <div class="card mt-2">
-                <div class="container">
-                  <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/admin/teacher"><i class="bi bi-people"></i> Guru</a>
                   </li>
                 </div>
@@ -50,7 +43,14 @@
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="rekapan.html"><i class="bi bi-book-half"></i> Mata Pelajaran</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/semester"><i class="bi bi-calendar3"></i> Semester</a>
+                  </li>
+                </div>
+              </div>
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/course"><i class="bi bi-book-half"></i> Mata Pelajaran</a>
                   </li>
                 </div>
               </div>
@@ -58,8 +58,8 @@
           </div>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-            <img src="/images/user.png" alt="img" class="img-fluid rounded-circle" width="35" />
+          <button type="button" class="btn dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <div class="bg-primary rounded-circle me-2 d-flex align-items-center justify-content-center icn-akun">A</div>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>

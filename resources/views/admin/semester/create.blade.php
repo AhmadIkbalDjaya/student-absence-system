@@ -1,9 +1,5 @@
 @extends('layouts.main')
 
-@push('style')
-  <link rel="stylesheet" href="/css/semester/create.css">
-@endpush
-
 @push('script')
   <script src="/js/create-semester.js"></script>
 @endpush
@@ -37,7 +33,7 @@
                 <h4 class="mb-4 text-center mt-3">Semester</h4>
                 <div>
                   <p class="mx-3">Semester :</p>
-                  <select name="odd_even" class="form-select @error('odd_even') is-invalid @enderror" required>
+                  <select name="odd_even" class="form-select m-3 @error('odd_even') is-invalid @enderror" required>
                     <option hidden>Ganjil / Genap</option>
                     <option value="1" {{ old("odd_even") == "1" ? "selected" : "" }}>Ganjil</option>
                     <option value="2" {{ old("odd_even") == "2" ? "selected" : "" }}>Genap</option>
@@ -51,10 +47,10 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div>
-                      <label for="tahun-ajaran">Tahun Ajaran:</label>
+                      <label for="tahun-ajaran" class="m-3">Tahun Ajaran:</label>
                       <div class="row align-items-center">
                         <div class="col-7 col-md-5">
-                          <select id="tahun-ajaran" name="start_year" class="@error('start_year') is-invalid @enderror">
+                          <select id="tahun-ajaran" name="start_year" class="m-3 @error('start_year') is-invalid @enderror">
                             <option hidden value="">Tahun Ajaran</option>
                             @for ($i = 2020; $i <= 2025; $i++)
                             <option value="{{ $i }}" {{ old("start_year") == "$i" ? "selected" : "" }}>{{ $i }}</option>
@@ -81,7 +77,7 @@
                           </table>
                         </div>
                       </div>
-                      <div class="card">
+                      <div class="card m-3">
                         <div class="card-body">
                           <strong class="card-title">Tahun Ajaran</strong>
                           <p class="card-text" id="tahun-ajaran-terpilih"></p>

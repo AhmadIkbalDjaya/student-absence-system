@@ -1,12 +1,7 @@
 @extends('layouts.main')
 
-@push('style')
-    <link rel="stylesheet" href="/css/teacher/create.css">
-@endpush
-
 @section('body')
   @include('partials.navbar')
-  
   @include('partials.header')
 
   <div id="section">

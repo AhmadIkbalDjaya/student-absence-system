@@ -14,11 +14,29 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+#offcanvasNavbar {
+  width: 30%;
+}
+
+@media (max-width: 768px) {
+  #offcanvasNavbar {
+    width: 75%;
+  }
+}
 
 .icn-akun {
   width: 35px;
   height: 35px;
+  color: #FFF;
+  font-weight: 600;
 }
+
+/* link */
+a {
+  text-decoration: none;
+  color: black;
+}
+/* end navbar */
 
 
 /* Form */

@@ -6,6 +6,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Claass;
+use App\Models\CourseStudent;
 
 class StudentController extends Controller
 {
@@ -51,7 +52,7 @@ class StudentController extends Controller
             "claass_id" => "required|exists:claasses,id"
         ]);
         Student::create($validated);
-        return redirect('/admin/student');
+        return redirect('/admin/student')->with('success', "Siswa Berhasil Di Tambahkan");
     }
 
     /**
@@ -100,7 +101,7 @@ class StudentController extends Controller
             "claass_id" => "required|exists:claasses,id"
         ]);
         $student->update($validated);
-        return redirect('/admin/student');
+        return redirect('/admin/student')->with('success', "Siswa Berhasil Di Update");
     }
 
     /**
@@ -111,7 +112,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        CourseStudent::where("student_id", $student->id)->delete();
         $student->delete();
-        return redirect('admin/student');
+        return redirect('admin/student')->with('success', "Siswa Berhasil Di Hapus");
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Course;
 use App\Models\Semester;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,7 @@ class SemesterController extends Controller
     {
         Semester::query()->update(["is_active" => "0"]);
         Semester::where("id", $request->active_id)->update(["is_active" => "1"]);
-        return back();
+        return back()->with('success', "Semester Aktif Berhasil Di Ubah");
     }
     /**
      * Display a listing of the resource.
@@ -55,7 +56,7 @@ class SemesterController extends Controller
         $validated["end_year"] = $validated["start_year"] + 1;
 
         Semester::create($validated);
-        return redirect('/admin/semester');
+        return redirect('/admin/semester')->with('success', "Semester Berhasil Di Tambahkan");
     }
 
     /**
@@ -100,7 +101,14 @@ class SemesterController extends Controller
      */
     public function destroy(Semester $semester)
     {
+        $use_count = Course::where("claass_id", $semester->id)->count();
+        if($use_count > 0){
+            return back()->with('failed', "Semester tidak dapat dihapus karena digunakan");
+        }
+        if($semester->is_active == 1){
+            return back()->with('failed', "Semester aktif tidak dapat dihapus");
+        }
         $semester->delete();
-        return redirect('/admin/semester');
+        return redirect('/admin/semester')->with('success', "Semester Berhasil Di Hapus");
     }
 }

@@ -1,8 +1,5 @@
 @extends('layouts.main')
 
-@push('style')
-    <link rel="stylesheet" href="/css/claass/create.css">
-@endpush
 @section('body')
   @include('partials.navbar')
   @include('partials.header')

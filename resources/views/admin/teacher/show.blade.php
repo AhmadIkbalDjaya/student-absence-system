@@ -1,9 +1,5 @@
 @extends('layouts.main')
 
-@push('style')
-  <link rel="stylesheet" href="/css/teacher/show.css">
-@endpush
-
 @section('body')
   @include('partials.navbar')
 

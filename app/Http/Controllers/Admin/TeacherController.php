@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -66,7 +67,7 @@ class TeacherController extends Controller
             "gender" => $validated["gender"],
         ];
         Teacher::create($new_teacher);
-        return redirect('/admin/teacher');
+        return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Tambahkan");
     }
 
     /**
@@ -137,7 +138,7 @@ class TeacherController extends Controller
             "gender" => $validated["gender"],
         ];
         $teacher->update($update_teacher);
-        return redirect('/admin/teacher');
+        return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Update");
     }
 
     /**
@@ -148,8 +149,12 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        User::where('id', $teacher->user->id)->delete();
+        $use_count = Course::where("claass_id", $teacher->id)->count();
+        if($use_count > 0){
+            return back()->with('failed', "Guru tidak dapat dihapus karena digunakan di $use_count Mata Pelajaran");
+        }
+        
         $teacher->delete();
-        return redirect('/admin/teacher');
+        return redirect('/admin/teacher')->with('failed', "Guru Berhasil Di Hapus");
     }
 }
