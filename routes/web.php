@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Attendance;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Admin\ClaassController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\StudentController;
@@ -42,3 +44,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('course', CourseController::class);
     });
 });
+
+Route::get('/class', [AttendanceController::class, 'userCourse']);
+Route::get('/class/course/{course}', [AttendanceController::class, 'courseAttendance']);
+Route::get('/class/course/{course}/attendance/create', [AttendanceController::class, 'createAttendance']);
+Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance']);
+Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance']);

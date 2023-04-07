@@ -55,7 +55,15 @@
                   </li>
                 </div>
               </div>
-                  
+              @endif
+              @if (auth()->user()->level == 0)
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('class') ? 'active' : '' }}" aria-current="page" href="/class"><i class="bi bi-book-half"></i>Kelas</a>
+                  </li>
+                </div>
+              </div>
               @endif
             </ul>
           </div>
