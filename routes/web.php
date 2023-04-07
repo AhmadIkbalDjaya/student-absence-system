@@ -20,20 +20,25 @@ use App\Http\Controllers\Admin\SemesterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index', [
+        "title" => "Absensi Sekolah"
+    ]);
+})->middleware('auth');
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('login', 'login')->name('login');
-    Route::post('login', 'authenticate');
-    Route::post('logout', 'logout');
+    Route::get('login', 'login')->name('login')->middleware('guest');
+    Route::post('login', 'authenticate')->middleware('guest');
+    Route::post('logout', 'logout')->middleware('auth');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
-    Route::post("semester/change", [SemesterController::class, 'changeSemester']);
-    Route::resource('teacher', TeacherController::class);
-    Route::resource('claass', ClaassController::class)->except(["show"]);
-    Route::resource('student', StudentController::class);
-    Route::resource('course', CourseController::class);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('', function () { return redirect('/'); });
+        Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
+        Route::post("semester/change", [SemesterController::class, 'changeSemester']);
+        Route::resource('teacher', TeacherController::class);
+        Route::resource('claass', ClaassController::class)->except(["show"]);
+        Route::resource('student', StudentController::class);
+        Route::resource('course', CourseController::class);
+    });
 });

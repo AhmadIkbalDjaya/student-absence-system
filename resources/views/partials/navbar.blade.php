@@ -15,45 +15,48 @@
               <div class="card">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-door"></i> Beranda</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/"><i class="bi bi-house-door"></i> Beranda</a>
+                  </li>
+                </div>
+              </div>
+              @if (auth()->user()->level == 1)
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('admin/teacher*') ? 'active' : '' }}" aria-current="page" href="/admin/teacher"><i class="bi bi-people"></i> Guru</a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/teacher"><i class="bi bi-people"></i> Guru</a>
+                    <a class="nav-link {{ Request::is('admin/student*') ? 'active' : '' }}" aria-current="page" href="/admin/student"><i class="bi bi-person"></i> Siswa</a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/student"><i class="bi bi-person"></i> Siswa</a>
+                    <a class="nav-link {{ Request::is('admin/claass*') ? 'active' : '' }}" aria-current="page" href="/admin/claass"><i class="bi bi-hospital"></i> Kelas</a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/claass"><i class="bi bi-hospital"></i> Kelas</a>
+                    <a class="nav-link {{ Request::is('admin/semester*') ? 'active' : '' }}" aria-current="page" href="/admin/semester"><i class="bi bi-calendar3"></i> Semester</a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/semester"><i class="bi bi-calendar3"></i> Semester</a>
+                    <a class="nav-link {{ Request::is('admin/course*') ? 'active' : '' }}" aria-current="page" href="/admin/course"><i class="bi bi-book-half"></i> Mata Pelajaran</a>
                   </li>
                 </div>
               </div>
-              <div class="card mt-2">
-                <div class="container">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/course"><i class="bi bi-book-half"></i> Mata Pelajaran</a>
-                  </li>
-                </div>
-              </div>
+                  
+              @endif
             </ul>
           </div>
         </div>
@@ -63,7 +66,14 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <button class="dropdown-item logout" type="button"><a href="/index.html">Logout</a></button>
+              {{-- <button class="dropdown-item logout" type="button"><a href="/index.html">Logout</a></button> --}}
+              <form action="/logout" method="post">
+                @csrf
+                <a class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i>
+                  <button type="submit" class="dropdown-item logout logout-button w-100 text-start">Logout</button>
+                </a>
+                {{-- <button type="submit"><i class="fa-solid fa-right-from-bracket"></i> Logout</button> --}}
+              </form>
             </li>
           </ul>
         </div>

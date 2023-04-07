@@ -1,3 +1,7 @@
+.active {
+  font-weight: 600;
+}
+
 .card {
   background: white;
   border-radius: 10px;
@@ -125,4 +129,12 @@ a {
   height: 2px;
   background: linear-gradient(90deg, transparent, #1303f4);
   animation: btn-anim1 2s linear infinite;
+}
+
+#bg-dashboard {
+  height: 75vh;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.432);
+  background-blend-mode: multiply;
+  background-image: url(/images/bg-dashboard.jpg);
 }
