@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-2 col-md-1">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border-width: 2px" />
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border-width: 2px" {{ $attendance->is_filled == 1 ? "checked" : "" }}/>
                   </div>
                 </div>
               </div>

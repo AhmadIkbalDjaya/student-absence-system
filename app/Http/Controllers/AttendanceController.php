@@ -48,9 +48,17 @@ class AttendanceController extends Controller
         $validated["semester_id"] = $course->semester->id;
         $attendance = Attendance::create($validated);
 
-        // ambil semua id siswa di course itu
+        // ambil semua id siswa di course itu (bisa menggunakan class id yag sma dengan class id di tabel course dan student)
+        $students_id = Student::where("claass_id", $course->claass_id)->pluck("id");
         // isi semua id student ke dalam table student_attendances
         // dengan attendance_id di atas dan status 0 
+        foreach ($students_id as $student) {
+            StudentAttendance::create([
+                "attendance_id" => $attendance->id,
+                "student_id" => $student,
+                "status" => "0"
+            ]);
+        }
         return redirect("/class/course/$course->id");
     }
 
@@ -58,6 +66,7 @@ class AttendanceController extends Controller
     {
         // ambil data dari student_attendance yg id attendancenya sama dengan id attendance di atas
         // kirim ke dalam view
+        $student_attendances = StudentAttendance::where("attendance_id", $attendance->id)->get();
         $students_id = CourseStudent::where('course_id', $course->id)->pluck('student_id');
         $students = Student::whereIn('id', $students_id)->get();
         
@@ -66,23 +75,25 @@ class AttendanceController extends Controller
             "students" => $students,
             "course" => $course,
             "attendance" => $attendance,
+            "student_attendaces" => $student_attendances,
         ]);
     }
     
     public function storeStudentAttendance(Request $request, Course $course, Attendance $attendance)
     {
         $validated = $request->validate([
-            "students_id" => "required|array",
+            "id" => "required|array",
             "statuses" => "required|array",
         ]);
 
-        foreach ($validated["students_id"] as $key => $student_id) {
+        foreach ($validated["id"] as $key => $student_attendance_id) {
             $student_attendance = [];
-            $student_attendance["attendance_id"] = $attendance->id;
-            $student_attendance["student_id"] = $student_id;
             $student_attendance["status"] = $validated["statuses"][$key];
-            StudentAttendance::create($student_attendance);
+            StudentAttendance::where("id", $student_attendance_id)->update($student_attendance);
         }
+        Attendance::where("id", $attendance->id)->update([
+            "is_filled" => "1",
+        ]);
         return redirect("/class/course/$course->id");
     }
 }

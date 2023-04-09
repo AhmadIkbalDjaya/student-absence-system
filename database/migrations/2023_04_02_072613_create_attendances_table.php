@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('attendance_title');
             $table->foreignIdFor(Course::class);
             $table->foreignIdFor(Semester::class);
+            $table->boolean('is_filled')->default(false);
             $table->timestamps();
         });
     }

@@ -77,14 +77,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($students as $student)
+                  @foreach ($student_attendaces as $student_attendace)
                   <tr>
                     <th scope="row" class="text-center">{{ $loop->iteration }}</th>
-                    <td style="white-space: nowrap">{{ $student->name }}</td>
-                    <input type="hidden" name="students_id[{{ $loop->iteration }}]" value="{{ $student->id }}">
-                    <td class="text-center">{{ $student->nis }}</td>
+                    <td style="white-space: nowrap">{{ $student_attendace->student->name }}</td>
+                    {{-- <input type="hidden" name="students_id[{{ $loop->iteration }}]" value="{{ $student_attendace->student->id }}"> --}}
+                    <input type="hidden" name="id[{{ $loop->iteration }}]" value="{{ $student_attendace->id }}">
+                    <td class="text-center">{{ $student_attendace->student->nis }}</td>
                     <td class="text-center">
-                      @if ($student->gender == "Laki-laki")
+                      @if ($student_attendace->student->gender == "Laki-laki")
                         L
                       @else
                         P
@@ -92,22 +93,22 @@
                     </td>
                     <td class="border-0">
                       <div class="form-check d-flex justify-content-center">
-                        <input class="form-check-input" type="radio" value="1" name="statuses[{{ $student->id }}]" required/>
+                        <input class="form-check-input" type="radio" value="1" name="statuses[{{ $student_attendace->student->id }}]" {{ $student_attendace->status == "1" ? "checked" : "" }} required/>
                       </div>
                     </td>
                     <td class="border-0">
                       <div class="form-check d-flex justify-content-center">
-                        <input class="form-check-input" type="radio" value="2" name="statuses[{{ $student->id }}]" required/>
+                        <input class="form-check-input" type="radio" value="2" name="statuses[{{ $student_attendace->student->id }}]" {{ $student_attendace->status == "2" ? "checked" : "" }} required/>
                       </div>
                     </td>
                     <td class="border-0">
                       <div class="form-check d-flex justify-content-center">
-                        <input class="form-check-input" type="radio" value="3" name="statuses[{{ $student->id }}]" required/>
+                        <input class="form-check-input" type="radio" value="3" name="statuses[{{ $student_attendace->student->id }}]" {{ $student_attendace->status == "3" ? "checked" : "" }} required/>
                       </div>
                     </td>
                     <td class="border-0 border-end">
                       <div class="form-check d-flex justify-content-center">
-                        <input class="form-check-input" type="radio" value="4" name="statuses[{{ $student->id }}]" required/>
+                        <input class="form-check-input" type="radio" value="4" name="statuses[{{ $student_attendace->student->id }}]" {{ $student_attendace->status == "4" ? "checked" : "" }} required/>
                       </div>
                     </td>
                   </tr>
