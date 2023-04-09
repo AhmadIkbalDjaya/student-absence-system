@@ -50,3 +50,4 @@ Route::get('/class/course/{course}', [AttendanceController::class, 'courseAttend
 Route::get('/class/course/{course}/attendance/create', [AttendanceController::class, 'createAttendance']);
 Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance']);
 Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance']);
+Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance']);
