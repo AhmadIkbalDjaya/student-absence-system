@@ -54,3 +54,5 @@ Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceControl
 
 Route::get('/recap', [RecapController::class, 'index']);
 Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap']);
+
+Route::get('/recap/print/course/{course}', [RecapController::class, 'print'])->name('print-recap');

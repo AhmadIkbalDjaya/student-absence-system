@@ -38,6 +38,11 @@
                   {{ $course->semester->end_year }}
                 </td>
               </tr>
+              <tr>
+                <td>Jumlah Pertemuan</td>
+                <td>:</td>
+                <td>{{ $attendances_count }} Pertemuan</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -55,7 +60,7 @@
                 <tr class="text-center">
                   <th scope="col">No</th>
                   <th scope="col">Nama</th>
-                  <th scope="col">NISN</th>
+                  <th scope="col">NIS</th>
                   <th scope="col">L/P</th>
                   <th scope="col">H</th>
                   <th scope="col">S</th>
@@ -103,7 +108,11 @@
           </div>
         </div>
         <div class="button mb-3">
-          <button type="button" class="btn btn-primary btn-sm"><a href="printRekapan.html">Cetak</a></button>
+          <button type="button" class="btn btn-primary btn-sm">
+            <a href="/recap/print/course/{{ $course->id }}" target="_blank" class="text-white fw-bolder">
+              <i class="bi bi-printer pe-1" style="font-size: 20px"></i>Cetak
+            </a>
+          </button>
         </div>
       </div>
     </div>

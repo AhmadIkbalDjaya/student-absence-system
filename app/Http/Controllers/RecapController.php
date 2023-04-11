@@ -21,16 +21,12 @@ class RecapController extends Controller
     }
 
     public function courseRecap(Course $course)
-    {
-        // $attendances_id = Attendance::where("course_id", $course->id)->pluck("id");
-        // dd($attendances_id);
-        // $student_attendances = StudentAttendance::whereIn("attendance_id", $attendances_id)->get();
-        // dd($student_attendances);
-        
+    {   
         // ambil semua siswa di course itu
         $students = Student::where('claass_id', $course->claass->id)->get();
         // ambil semua studentAttendance di course itu
         $attendances_id = Attendance::where("course_id", $course->id)->pluck("id");
+        // dd(count($attendances_id));
         $student_attendances = StudentAttendance::whereIn("attendance_id", $attendances_id)->get();
         // dd($student_attendances);
         return view("user.recap.course-recap", [
@@ -38,6 +34,21 @@ class RecapController extends Controller
             "course" => $course,
             "students" => $students,
             "student_attendances" => $student_attendances,
+            "attendances_count" => count($attendances_id),
+        ]);
+    }
+
+    public function print(Course $course)
+    {
+        $students = Student::where('claass_id', $course->claass->id)->get();
+        $attendances_id = Attendance::where("course_id", $course->id)->pluck("id");
+        $student_attendances = StudentAttendance::whereIn("attendance_id", $attendances_id)->get();
+        return view("user.recap.print", [
+            "title" => "Rekap $course->course_name " . $course->claass->class_name,
+            "course" => $course,
+            "students" => $students,
+            "student_attendances" => $student_attendances,
+            "attendances_count" => count($attendances_id),
         ]);
     }
 }
