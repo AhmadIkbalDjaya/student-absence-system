@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Attendance;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\RecapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +51,6 @@ Route::get('/class/course/{course}/attendance/create', [AttendanceController::cl
 Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance']);
 Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance']);
 Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance']);
+
+Route::get('/recap', [RecapController::class, 'index']);
+Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap']);
