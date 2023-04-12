@@ -17,6 +17,7 @@ class RecapController extends Controller
             "title" => "Rekap Absensi",
             "IPAclaasses" => Claass::where("major", "IPA")->orderBy("class_level")->get(),
             "IPSclaasses" => Claass::where("major", "IPS")->orderBy("class_level")->get(),
+            "active_semester_id" => $this->active_semester->id,
         ]);
     }
 

@@ -55,6 +55,13 @@
                   </li>
                 </div>
               </div>
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('admin/recap*') ? 'active' : '' }}" aria-current="page" href="/admin/recap"><i class="bi bi-file-earmark-text"></i> Rekap Absensi</a>
+                  </li>
+                </div>
+              </div>
               @endif
               @if (auth()->user()->level == 0)
               <div class="card mt-2">
@@ -77,17 +84,16 @@
         </div>
         <div class="btn-group">
           <button type="button" class="btn dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-            <div class="bg-primary rounded-circle me-2 d-flex align-items-center justify-content-center icn-akun">A</div>
+            <div class="bg-primary rounded-circle me-2 d-flex align-items-center justify-content-center icn-akun">
+              {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
+            </div>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              {{-- <button class="dropdown-item logout" type="button"><a href="/index.html">Logout</a></button> --}}
+              <button class="dropdown-item">{{ auth()->user()->name }}</button>
               <form action="/logout" method="post">
                 @csrf
-                <a class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i>
-                  <button type="submit" class="dropdown-item logout logout-button w-100 text-start">Logout</button>
-                </a>
-                {{-- <button type="submit"><i class="fa-solid fa-right-from-bracket"></i> Logout</button> --}}
+                <button type="submit" class="dropdown-item">Logout</button>
               </form>
             </li>
           </ul>

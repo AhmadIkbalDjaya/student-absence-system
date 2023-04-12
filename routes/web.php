@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminRecapContoller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
@@ -42,17 +43,22 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('claass', ClaassController::class)->except(["show"]);
         Route::resource('student', StudentController::class);
         Route::resource('course', CourseController::class);
+
+        Route::get('recap', [AdminRecapContoller::class, 'index']);
+        Route::get('recap/{course}', [AdminRecapContoller::class, 'recapCourse']);
     });
 });
+Route::middleware(['auth', 'teacher'])->group(function () {
+    Route::get('/class', [AttendanceController::class, 'userCourse']);
+    Route::get('/class/course/{course}', [AttendanceController::class, 'courseAttendance']);
+    Route::get('/class/course/{course}/attendance/create', [AttendanceController::class, 'createAttendance']);
+    Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance']);
+    Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance']);
+    Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance']);
 
-Route::get('/class', [AttendanceController::class, 'userCourse']);
-Route::get('/class/course/{course}', [AttendanceController::class, 'courseAttendance']);
-Route::get('/class/course/{course}/attendance/create', [AttendanceController::class, 'createAttendance']);
-Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance']);
-Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance']);
-Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance']);
+    Route::get('/recap', [RecapController::class, 'index']);
+    Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap']);
+    
+});
 
-Route::get('/recap', [RecapController::class, 'index']);
-Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap']);
-
-Route::get('/recap/print/course/{course}', [RecapController::class, 'print'])->name('print-recap');
+Route::get('/recap/print/course/{course}', [RecapController::class, 'print'])->name('print-recap')->middleware('auth');

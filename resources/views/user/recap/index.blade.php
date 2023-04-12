@@ -36,7 +36,7 @@
                     <p class="p-0"> {{ $claass->class_name }} </p>
                     <div>
                       @foreach ($claass->course as $userCourse)
-                          @if ($userCourse->teacher_id == 1)
+                          @if ($userCourse->teacher_id == auth()->user()->teacher->id && $userCourse->semester_id == $active_semester_id)
                             <a href="/recap/course/{{ $userCourse->id }}" class="btn btn-success d-block mb-3">
                               {{ $userCourse->course_name }}
                             </a>

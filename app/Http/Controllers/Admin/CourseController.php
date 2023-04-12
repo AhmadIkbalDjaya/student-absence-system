@@ -22,7 +22,7 @@ class CourseController extends Controller
     {
         return view("admin.course.index", [
             "title" => "Mata Pelajaran",
-            "courses" => Course::all(),
+            "courses" => Course::where("semester_id", $this->active_semester->id)->get(),
         ]);
     }
 
