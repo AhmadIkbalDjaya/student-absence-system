@@ -74,11 +74,45 @@
                     @endif
                   </td>
                   <td>
-                    <form action="/admin/semester/{{ $semester->id }}" method="post" class="d-inline">
+                    <!-- Button trigger modal delete -->
+                    <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $semester->id }}">
+                      Hapus
+                    </a>
+
+                    <!-- Modal delete -->
+                    <div class="modal fade" id="deleteModal{{ $semester->id }}" tabindex="-1" aria-labelledby="deleteModal{{ $semester->id }}Label" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModal{{ $semester->id }}Label">Konfirmasi Hapus</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="/admin/semester/{{ $semester->id }}" method="post" class="d-inline">
+                              @method("delete")
+                              @csrf
+                              Yakin Ingin Menghapus Semester
+                              @if ($semester->odd_even == 1)
+                                (Ganjil)  
+                              @else
+                                (Genap)
+                              @endif
+                              {{ $semester->start_year }}/{{ $semester->end_year }}
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button class="btn btn-danger text-bg-danger border-0">Delete</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {{-- <form action="/admin/semester/{{ $semester->id }}" method="post" class="d-inline">
                       @method("delete")
                       @csrf
                       <button class="badge text-bg-danger border-0">Delete</button>
-                    </form>
+                    </form> --}}
                   </td>
                 </tr>
               @endforeach

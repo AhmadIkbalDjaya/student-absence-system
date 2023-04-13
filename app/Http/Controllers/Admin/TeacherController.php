@@ -149,12 +149,12 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        $use_count = Course::where("claass_id", $teacher->id)->count();
+        $use_count = Course::where("teacher_id", $teacher->id)->count();
         if($use_count > 0){
             return back()->with('failed', "Guru tidak dapat dihapus karena digunakan di $use_count Mata Pelajaran");
         }
-        
+        $teacher->user->delete();
         $teacher->delete();
-        return redirect('/admin/teacher')->with('failed', "Guru Berhasil Di Hapus");
+        return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Hapus");
     }
 }

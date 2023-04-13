@@ -49,13 +49,40 @@
                     <td>{{ $course->teacher->user->name }}</td>
                     <td>{{ $course->claass->class_name }}</td>
                     <td>
-                      {{-- <a href="/admin/course/{{ $course->id }}"><span class="badge text-bg-info">Informasi</span></a> --}}
                       <a href="/admin/course/{{ $course->id }}/edit"><span class="badge text-bg-warning">Edit Mapel</span></a>
-                      <form action="/admin/course/{{ $course->id }}" method="post" class="d-inline">
+                      <!-- Button trigger modal delete -->
+                      <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $course->id }}">
+                        Hapus
+                      </a>
+
+                      <!-- Modal delete -->
+                      <div class="modal fade" id="deleteModal{{ $course->id }}" tabindex="-1" aria-labelledby="deleteModal{{ $course->id }}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="deleteModal{{ $course->id }}Label">Konfirmasi Hapus</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/admin/course/{{ $course->id }}" method="post" class="d-inline">
+                                @method("delete")
+                                @csrf
+                                Yakin Ingin Menghapus {{ $course->course_name }}
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-danger text-bg-danger border-0">Delete</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {{-- <form action="/admin/course/{{ $course->id }}" method="post" class="d-inline">
                         @method("delete")
                         @csrf
                         <button class="badge text-bg-danger border-0">Delete</button>
-                      </form>
+                      </form> --}}
                     </td>
                   </tr>
                 @endforeach
