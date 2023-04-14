@@ -83,18 +83,29 @@ class AttendanceController extends Controller
     public function storeStudentAttendance(Request $request, Course $course, Attendance $attendance)
     {
         $validated = $request->validate([
+            "students_id" => "required|array",
             "id" => "required|array",
             "statuses" => "required|array",
         ]);
+        // dd($validated);
 
         foreach ($validated["id"] as $key => $student_attendance_id) {
             $student_attendance = [];
             $student_attendance["status"] = $validated["statuses"][$key];
             StudentAttendance::where("id", $student_attendance_id)->update($student_attendance);
+            if ($validated['statuses'][$key] == 4) {
+                $alpa_students_id[] = $validated["students_id"][$key];
+            }
         }
         Attendance::where("id", $attendance->id)->update([
             "is_filled" => "1",
         ]);
+        // mengambil id student yg alpa jika ada yg alpa
+        if (isset($alpa_students_id)) {
+            // dd($alpa_students_id);
+            // $alpa_students = Student::whereIn('id', $alpa_students_id)->get();
+            // dd($alpa_students);
+        }   
         return redirect("/class/course/$course->id");
     }
 }
