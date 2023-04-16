@@ -77,8 +77,10 @@
                   </td>
                   <td>
                     <!-- Button trigger modal delete -->
-                    <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $semester->id }}">
-                      Hapus
+                    <a href="" class="" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $semester->id }}">
+                      <span class="badge text-bg-danger">
+                        Hapus
+                      </span>
                     </a>
 
                     <!-- Modal delete -->

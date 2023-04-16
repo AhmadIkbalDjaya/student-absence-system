@@ -42,17 +42,17 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $student->nis }}</td>
                     <td>{{ $student->name }}</td>
-                    <td>
+                    <td class="d-flex justify-content-center">
                       <a href="{{ route('admin.student.show', ['student' => $student->id]) }}">
-                        <span class="badge text-bg-info">Informasi</span>
+                        <span class="badge text-bg-info me-1">Informasi</span>
                       </a>
                       <a href="{{ route('admin.student.edit', ['student' => $student->id]) }}">
-                        <span class="badge text-bg-warning">Edit User</span>
+                        <span class="badge text-bg-warning me-1">Edit User</span>
                       </a>
 
                       <!-- Button trigger modal delete -->
-                      <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $student->id }}">
-                        Hapus
+                      <a href="" class="" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $student->id }}">
+                        <span class="badge text-bg-danger me-1">Hapus</span>
                       </a>
 
                       <!-- Modal delete -->
@@ -64,7 +64,6 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              {{-- <form action="/admin/student/{{ $student->id }}" method="post" class="d-inline"> --}}
                               <form action="{{ route('admin.student.destroy', ['student' => $student->id]) }}" method="post" class="d-inline">
                                 @method("delete")
                                 @csrf

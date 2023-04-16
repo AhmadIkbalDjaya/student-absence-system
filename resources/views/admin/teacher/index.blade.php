@@ -43,17 +43,17 @@
                 <th scope="row">{{ $loop->iteration }}</th>
                 <td>{{ $teacher->user->username }}</td>
                 <td>{{ $teacher->user->name }}</td>
-                <td>
+                <td class="d-flex justify-content-center">
                   <a href="{{ route('admin.teacher.show', ['teacher' => $teacher->id]) }}">
-                    <span class="badge text-bg-info">Informasi</span>
+                    <span class="badge text-bg-info me-1">Informasi</span>
                   </a>
                   <a href="{{ route('admin.teacher.edit', ['teacher' => $teacher->id]) }}">
-                    <span class="badge text-bg-warning">Edit User</span>
+                    <span class="badge text-bg-warning me-1">Edit User</span>
                   </a>
                   
                   <!-- Button trigger modal delete -->
-                  <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $teacher->id }}">
-                    Hapus
+                  <a href="" class="" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $teacher->id }}">
+                    <span class="badge text-bg-danger me-1">Hapus</span>
                   </a>
 
                   <!-- Modal delete -->

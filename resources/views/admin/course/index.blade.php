@@ -48,13 +48,13 @@
                     <td>{{ $course->course_name }}</td>
                     <td>{{ $course->teacher->user->name }}</td>
                     <td>{{ $course->claass->class_name }}</td>
-                    <td>
+                    <td class="d-flex justify-content-center">
                       <a href="{{ route('admin.course.edit', ['course' => $course->id]) }}">
-                        <span class="badge text-bg-warning">Edit Mapel</span>
+                        <span class="badge text-bg-warning me-1">Edit Mapel</span>
                       </a>
                       <!-- Button trigger modal delete -->
-                      <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $course->id }}">
-                        Hapus
+                      <a href="" class="" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $course->id }}">
+                        <span class="badge text-bg-danger">Hapus</span>
                       </a>
 
                       <!-- Modal delete -->

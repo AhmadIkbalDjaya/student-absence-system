@@ -45,13 +45,13 @@
                     <td>{{ $claass->class_name }}</td>
                     <td>{{ $claass->class_level }}</td>
                     <td>{{ $claass->major }}</td>
-                    <td>
-                      <a href="{{ route('admin.claass.edit', ['claass' => $claass->id]) }}">
+                    <td class="d-flex justify-content-center">
+                      <a href="{{ route('admin.claass.edit', ['claass' => $claass->id]) }}" class="me-1">
                         <span class="badge text-bg-warning">Edit Kelas</span>
                       </a>
                       <!-- Button trigger modal delete -->
-                      <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $claass->id }}">
-                        Hapus
+                      <a href="" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $claass->id }}">
+                        <span class="badge text-bg-danger">Hapus</span>
                       </a>
 
                       <!-- Modal delete -->

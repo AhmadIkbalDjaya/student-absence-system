@@ -12,7 +12,7 @@ class Student extends Model
     protected $guarded = ["id"];
 
     public function claass () {
-        return $this->belongsTo(claass::class);
+        return $this->belongsTo(Claass::class);
     }
 
     
