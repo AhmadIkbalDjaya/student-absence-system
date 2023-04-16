@@ -52,7 +52,8 @@ class StudentController extends Controller
             "claass_id" => "required|exists:claasses,id"
         ]);
         Student::create($validated);
-        return redirect('/admin/student')->with('success', "Siswa Berhasil Di Tambahkan");
+        // return redirect('/admin/student')->with('success', "Siswa Berhasil Di Tambahkan");
+        return redirect()->route('admin.student.index')->with("success", "Siswa Berhasil Ditambahkan");
     }
 
     /**
@@ -101,7 +102,8 @@ class StudentController extends Controller
             "claass_id" => "required|exists:claasses,id"
         ]);
         $student->update($validated);
-        return redirect('/admin/student')->with('success', "Siswa Berhasil Di Update");
+        // return redirect('/admin/student')->with('success', "Siswa Berhasil Di Update");
+        return redirect()->route('admin.student.index')->with("success", "Siswa Berhasil Diedit");
     }
 
     /**
@@ -114,6 +116,7 @@ class StudentController extends Controller
     {
         CourseStudent::where("student_id", $student->id)->delete();
         $student->delete();
-        return redirect('admin/student')->with('success', "Siswa Berhasil Di Hapus");
+        // return redirect('admin/student')->with('success', "Siswa Berhasil Di Hapus");
+        return redirect()->route('admin.student.index')->with("success", "Siswa Berhasil Dihapus");
     }
 }

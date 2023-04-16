@@ -21,16 +21,15 @@ class LoginController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended("/");
+            return redirect()->intended('home');
         }
-        
-        return redirect()->back("loginError", "Login Gagal");
+        return back()->with('loginError', 'Login Gagal!');
     }
 
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

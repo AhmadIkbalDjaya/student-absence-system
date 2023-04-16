@@ -57,7 +57,7 @@
           </div>
           <div>
             <button type="button" class="btn btn-success" style="--bs-btn-padding-y: 0.25rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 0.75rem">
-              <a href="/admin/student" class="text-decoration-none text-white">Back</a>
+              <a href="{{ route('admin.student.index') }}" class="text-decoration-none text-white">Back</a>
             </button>
           </div>
         </div>

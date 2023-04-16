@@ -40,7 +40,9 @@
               </tr>
             </tbody>
           </table>
-          <a href="/class/course/{{ $course->id }}/attendance/create" class="btn btn-success">Buat Absensi</a>
+          <a href="{{ route('teacher.attendance.create', ['course' => $course->id]) }}" class="btn btn-success">
+            Buat Absensi
+          </a>
         </div>
       </div>
     </div>
@@ -56,7 +58,11 @@
               <h5 class="card-header text-center bg-transparent">{{ $attendance->attendance_title }}</h5>
               <div class="card-body row align-items-center">
                 <div class="col-10 col-md-11">
-                  <p class="fs-5"><i class="bi bi-people"></i><a href="/class/course/{{ $course->id }}/attendance/{{ $attendance->id }}"> Kehadiran</a></p>
+                  <p class="fs-5"><i class="bi bi-people"></i>
+                    <a href="{{ route('teacher.student.attendance', ['course' => $course->id, 'attendance' => $attendance->id]) }}">
+                       Kehadiran
+                    </a>
+                  </p>
                 </div>
                 <div class="col-2 col-md-1">
                   <div class="form-check">

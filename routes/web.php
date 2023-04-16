@@ -26,39 +26,39 @@ Route::get('/', function () {
     return view('index', [
         "title" => "Absensi Sekolah"
     ]);
-})->middleware('auth');
+})->name('home')->middleware('auth');
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'login')->name('login')->middleware('guest');
-    Route::post('login', 'authenticate')->middleware('guest');
-    Route::post('logout', 'logout')->middleware('auth');
+    Route::post('login', 'authenticate')->name('login.store')->middleware('guest');
+    Route::post('logout', 'logout')->name('logout')->middleware('auth');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('', function () { return redirect('/'); });
-        Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"]);
-        Route::post("semester/change", [SemesterController::class, 'changeSemester']);
-        Route::resource('teacher', TeacherController::class);
-        Route::resource('claass', ClaassController::class)->except(["show"]);
-        Route::resource('student', StudentController::class);
-        Route::resource('course', CourseController::class);
+        Route::get('', function () { return redirect('/'); })->name('admin');
+        Route::resource('semester', SemesterController::class)->except(["show", "edit", "update"])->names('admin.semester');
+        Route::post("semester/change", [SemesterController::class, 'changeSemester'])->name('admin.semester.change');
+        Route::resource('teacher', TeacherController::class)->names('admin.teacher');
+        Route::resource('claass', ClaassController::class)->except(["show"])->names('admin.claass');
+        Route::resource('student', StudentController::class)->names('admin.student');
+        Route::resource('course', CourseController::class)->names('admin.course');
 
-        Route::get('recap', [AdminRecapContoller::class, 'index']);
-        Route::get('recap/{course}', [AdminRecapContoller::class, 'recapCourse']);
+        Route::get('recap', [AdminRecapContoller::class, 'index'])->name('admin.recap.index');
+        Route::get('recap/{course}', [AdminRecapContoller::class, 'recapCourse'])->name('admin.recap.course');
     });
 });
 Route::middleware(['auth', 'teacher'])->group(function () {
-    Route::get('/class', [AttendanceController::class, 'userCourse']);
-    Route::get('/class/course/{course}', [AttendanceController::class, 'courseAttendance']);
-    Route::get('/class/course/{course}/attendance/create', [AttendanceController::class, 'createAttendance']);
-    Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance']);
-    Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance']);
-    Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance']);
+    Route::get('/class', [AttendanceController::class, 'userCourse'])->name('teacher.claass');
+    Route::get('/class/course/{course}', [AttendanceController::class, 'courseAttendance'])->name('teacher.attendance');
+    Route::get('/class/course/{course}/attendance/create', [AttendanceController::class, 'createAttendance'])->name('teacher.attendance.create');
+    Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance'])->name('teacher.attendance.store');
+    Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance'])->name('teacher.student.attendance');
+    Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance'])->name('teacher.student.attendance.store');
 
-    Route::get('/recap', [RecapController::class, 'index']);
-    Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap']);
+    Route::get('/recap', [RecapController::class, 'index'])->name('teacher.recap');
+    Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap'])->name('teacher.recap.course');
     
 });
 
-Route::get('/recap/print/course/{course}', [RecapController::class, 'print'])->name('print-recap')->middleware('auth');
+Route::get('/recap/print/course/{course}', [RecapController::class, 'print'])->name('print.recap')->middleware('auth');

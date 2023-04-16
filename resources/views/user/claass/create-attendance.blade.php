@@ -8,8 +8,8 @@
     <div class="container-fluid card shadow-lg">
       <div class="row mt-3">
         <div class="col-2">
-          <a href="/class/course/{{ $course->id }}"
-            ><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button
+          <a href="{{ route('teacher.attendance', ['course' => $course->id]) }}">
+            <button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button
           ></a>
         </div>
         <div class="col-md-12 text-center">
@@ -26,7 +26,8 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             <div class="login-box my-4">
-              <form action="/class/course/{{ $course->id }}/attendance" method="POST">
+              {{-- <form action="/class/course/{{ $course->id }}/attendance" method="POST"> --}}
+              <form action="{{ route('teacher.attendance.store', ['course' => $course->id]) }}" method="POST">
                 @csrf
                 <h4 class="mb-4 text-center">Buat Absensi</h4>
                 <div class="user-box mt-4">

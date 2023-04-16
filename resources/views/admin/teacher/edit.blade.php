@@ -24,7 +24,7 @@
       <div class="col-md-12 card-header">
         <h4>Edit Guru</h4>
       </div>
-      <form action="/admin/teacher/{{ $teacher->id }}" method="post">
+      <form action="{{ route('admin.teacher.update', ['teacher' => $teacher->id]) }}" method="post">
         @method('patch')
         @csrf
         <div class="col-md-12 card-body">

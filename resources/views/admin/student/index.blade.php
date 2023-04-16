@@ -12,7 +12,9 @@
           <p>Tambah, Edit atau hapus Siswa</p>
         </div>
         <div class="col-md-4">
-          <a href="/admin/student/create"><button type="button" class="btn btn-success">Tambah Siswa</button></a>
+          <a href="{{ route('admin.student.create') }}">
+            <button type="button" class="btn btn-success">Tambah Siswa</button>
+          </a>
         </div>
       </div>
     </div>
@@ -41,8 +43,12 @@
                     <td>{{ $student->nis }}</td>
                     <td>{{ $student->name }}</td>
                     <td>
-                      <a href="/admin/student/{{ $student->id }}"><span class="badge text-bg-info">Informasi</span></a>
-                      <a href="/admin/student/{{ $student->id }}/edit"><span class="badge text-bg-warning">Edit User</span></a>
+                      <a href="{{ route('admin.student.show', ['student' => $student->id]) }}">
+                        <span class="badge text-bg-info">Informasi</span>
+                      </a>
+                      <a href="{{ route('admin.student.edit', ['student' => $student->id]) }}">
+                        <span class="badge text-bg-warning">Edit User</span>
+                      </a>
 
                       <!-- Button trigger modal delete -->
                       <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $student->id }}">
@@ -58,7 +64,8 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="/admin/student/{{ $student->id }}" method="post" class="d-inline">
+                              {{-- <form action="/admin/student/{{ $student->id }}" method="post" class="d-inline"> --}}
+                              <form action="{{ route('admin.student.destroy', ['student' => $student->id]) }}" method="post" class="d-inline">
                                 @method("delete")
                                 @csrf
                                 Yakin Ingin Menghapus {{ $student->name }}
@@ -72,12 +79,6 @@
                           </div>
                         </div>
                       </div>
-
-                      {{-- <form action="/admin/student/{{ $student->id }}" method="post" class="d-inline">
-                        @method("delete")
-                        @csrf
-                        <button class="badge text-bg-danger border-0">Delete</button>
-                      </form> --}}
                     </td>
                   </tr>
                     

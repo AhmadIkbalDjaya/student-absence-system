@@ -14,7 +14,7 @@ class SemesterController extends Controller
     {
         Semester::query()->update(["is_active" => "0"]);
         Semester::where("id", $request->active_id)->update(["is_active" => "1"]);
-        return back()->with('success', "Semester Aktif Berhasil Di Ubah");
+        return back()->with("success", "Semester Aktif Berhasil Di Ubah");
     }
     /**
      * Display a listing of the resource.
@@ -56,7 +56,8 @@ class SemesterController extends Controller
         $validated["end_year"] = $validated["start_year"] + 1;
 
         Semester::create($validated);
-        return redirect('/admin/semester')->with('success', "Semester Berhasil Di Tambahkan");
+        // return redirect('/admin/semester')->with('success', "Semester Berhasil Di Tambahkan");
+        return redirect()->route('admin.semester.index')->with("success", "Semester Berhasil Ditambahkan");
     }
 
     /**
@@ -109,6 +110,7 @@ class SemesterController extends Controller
             return back()->with('failed', "Semester aktif tidak dapat dihapus");
         }
         $semester->delete();
-        return redirect('/admin/semester')->with('success', "Semester Berhasil Di Hapus");
+        // return redirect('/admin/semester')->with('success', "Semester Berhasil Di Hapus");
+        return redirect()->route('admin.semester.index')->with("success", "Semester Berhasil Dihapus");
     }
 }

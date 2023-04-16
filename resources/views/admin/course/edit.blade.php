@@ -8,7 +8,7 @@
     <div class="container-fluid card shadow-lg">
       <div class="row mt-3">
         <div class="col-2">
-          <a href="mapel.html"
+          <a href="{{ route('admin.course.index') }}"
             ><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button>
           </a>
         </div>
@@ -26,7 +26,7 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             <div class="login-box my-4">
-              <form action="/admin/course/{{ $course->id }}" method="post">
+              <form action="{{ route('admin.course.update', ['course' => $course->id]) }}" method="post">
                 @method("patch")
                 @csrf
                 <input type="hidden" name="claass_id_old" value="{{ $course->claass_id }}">

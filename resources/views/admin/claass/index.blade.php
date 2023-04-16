@@ -12,7 +12,9 @@
           <p>Tambah, Edit atau hapus Kelas</p>
         </div>
         <div class="col-md-4">
-          <a href="/admin/claass/create"><button type="button" class="btn btn-success">Tambah Kelas</button></a>
+          <a href="{{ route('admin.claass.create') }}">
+            <button type="button" class="btn btn-success">Tambah Kelas</button>
+          </a>
         </div>
       </div>
     </div>
@@ -44,7 +46,9 @@
                     <td>{{ $claass->class_level }}</td>
                     <td>{{ $claass->major }}</td>
                     <td>
-                      <a href="/admin/claass/{{ $claass->id }}/edit"><span class="badge text-bg-warning">Edit Kelas</span></a>
+                      <a href="{{ route('admin.claass.edit', ['claass' => $claass->id]) }}">
+                        <span class="badge text-bg-warning">Edit Kelas</span>
+                      </a>
                       <!-- Button trigger modal delete -->
                       <a href="" class="badge text-bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $claass->id }}">
                         Hapus
@@ -59,7 +63,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="/admin/claass/{{ $claass->id }}" method="post" class="d-inline">
+                              <form action="{{ route('admin.claass.destroy', ['claass' => $claass->id]) }}" method="post" class="d-inline">
                                 @method("delete")
                                 @csrf
                                 Yakin Ingin Menghapus Kelas {{ $claass->class_name }}
@@ -72,12 +76,6 @@
                           </div>
                         </div>
                       </div>
-                      
-                      {{-- <form action="/admin/claass/{{ $claass->id }}" method="post" class="d-inline">
-                        @method("delete")
-                        @csrf
-                        <button class="badge text-bg-danger border-0">Delete</button>
-                      </form> --}}
                     </td>
                   </tr>
                 @endforeach

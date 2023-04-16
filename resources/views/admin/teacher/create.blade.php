@@ -21,7 +21,7 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             <div class="login-box">
-              <form action="/admin/teacher" method="post">
+              <form action="{{ route('admin.teacher.store') }}" method="post">
                 @csrf
                 <h4 class="mb-4 text-center">Guru</h4>
                 <div class="user-box mt-3">

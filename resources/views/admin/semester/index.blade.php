@@ -12,10 +12,12 @@
         <p>Tambah, Edit atau hapus Semester</p>
       </div>
       <div class="col-md-4">
-        <a href="/admin/semester/create"><button type="button" class="btn btn-success">Tambah Semester</button></a>
+        <a href="{{ route('admin.semester.create') }}">
+          <button type="button" class="btn btn-success">Tambah Semester</button>
+        </a>
       </div>
       <div class="col-md-6 my-2">
-        <form action="/admin/semester/change" method="post">
+        <form action="{{ route('admin.semester.change') }}" method="post">
           @csrf
           <label for="active-semester">Semester Aktif: </label>
           <select name="active_id" id="active-semester">
@@ -88,7 +90,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <form action="/admin/semester/{{ $semester->id }}" method="post" class="d-inline">
+                            <form action="{{ route('admin.semester.destroy', ['semester' => $semester->id]) }}" method="post" class="d-inline">
                               @method("delete")
                               @csrf
                               Yakin Ingin Menghapus Semester
@@ -107,12 +109,6 @@
                         </div>
                       </div>
                     </div>
-
-                    {{-- <form action="/admin/semester/{{ $semester->id }}" method="post" class="d-inline">
-                      @method("delete")
-                      @csrf
-                      <button class="badge text-bg-danger border-0">Delete</button>
-                    </form> --}}
                   </td>
                 </tr>
               @endforeach

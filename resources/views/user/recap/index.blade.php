@@ -37,7 +37,7 @@
                     <div>
                       @foreach ($claass->course as $userCourse)
                           @if ($userCourse->teacher_id == auth()->user()->teacher->id && $userCourse->semester_id == $active_semester_id)
-                            <a href="/recap/course/{{ $userCourse->id }}" class="btn btn-success d-block mb-3">
+                            <a href="{{ route('teacher.recap.course', ['course' => $userCourse->id]) }}" class="btn btn-success d-block mb-3">
                               {{ $userCourse->course_name }}
                             </a>
                           @endif
@@ -71,8 +71,8 @@
                     <p class="p-0"> {{ $claass->class_name }} </p>
                     <div>
                       @foreach ($claass->course as $userCourse)
-                          @if ($userCourse->teacher_id == 1)
-                            <a href="/class/course/{{ $userCourse->id }}" class="btn btn-success d-block mb-3">
+                          @if ($userCourse->teacher_id == auth()->user()->teacher->id && $userCourse->semester_id == $active_semester_id)
+                            <a href="{{ route('teacher.attendance', ['course' => $userCourse->id]) }}" class="btn btn-success d-block mb-3">
                               {{ $userCourse->course_name }}
                             </a>
                           @endif
@@ -91,5 +91,5 @@
 @endsection
 
 @push('script')
-  <script src="/js/user-course.js"></script>
+  <script src="{{ asset('js/user-course.js') }}"></script>
 @endpush

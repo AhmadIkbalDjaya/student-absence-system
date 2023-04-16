@@ -15,7 +15,9 @@
               <div class="card">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/"><i class="bi bi-house-door"></i> Beranda</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">
+                      <i class="bi bi-house-door"></i> Beranda
+                    </a>
                   </li>
                 </div>
               </div>
@@ -23,42 +25,54 @@
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/teacher*') ? 'active' : '' }}" aria-current="page" href="/admin/teacher"><i class="bi bi-people"></i> Guru</a>
+                    <a class="nav-link {{ Request::is('admin/teacher*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.teacher.index') }}">
+                      <i class="bi bi-people"></i> Guru
+                    </a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/student*') ? 'active' : '' }}" aria-current="page" href="/admin/student"><i class="bi bi-person"></i> Siswa</a>
+                    <a class="nav-link {{ Request::is('admin/student*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.student.index') }}">
+                      <i class="bi bi-person"></i> Siswa
+                    </a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/claass*') ? 'active' : '' }}" aria-current="page" href="/admin/claass"><i class="bi bi-hospital"></i> Kelas</a>
+                    <a class="nav-link {{ Request::is('admin/claass*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.claass.index') }}">
+                      <i class="bi bi-hospital"></i> Kelas
+                    </a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/semester*') ? 'active' : '' }}" aria-current="page" href="/admin/semester"><i class="bi bi-calendar3"></i> Semester</a>
+                    <a class="nav-link {{ Request::is('admin/semester*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.semester.index') }}">
+                      <i class="bi bi-calendar3"></i> Semester
+                    </a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/course*') ? 'active' : '' }}" aria-current="page" href="/admin/course"><i class="bi bi-book-half"></i> Mata Pelajaran</a>
+                    <a class="nav-link {{ Request::is('admin/course*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.course.index') }}">
+                      <i class="bi bi-book-half"></i> Mata Pelajaran
+                    </a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/recap*') ? 'active' : '' }}" aria-current="page" href="/admin/recap"><i class="bi bi-file-earmark-text"></i> Rekap Absensi</a>
+                    <a class="nav-link {{ Request::is('admin/recap*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.recap.index') }}">
+                      <i class="bi bi-file-earmark-text"></i> Rekap Absensi
+                    </a>
                   </li>
                 </div>
               </div>
@@ -67,14 +81,18 @@
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('class*') ? 'active' : '' }}" aria-current="page" href="/class"><i class="bi bi-book-half"></i>Kelas</a>
+                    <a class="nav-link {{ Request::is('class*') ? 'active' : '' }}" aria-current="page" href="{{ route('teacher.claass') }}">
+                      <i class="bi bi-book-half"></i>Kelas
+                    </a>
                   </li>
                 </div>
               </div>
               <div class="card mt-2">
                 <div class="container">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('recap*') ? 'active' : '' }}" aria-current="page" href="/recap"><i class="bi bi-file-earmark-text"></i>Rekap</a>
+                    <a class="nav-link {{ Request::is('recap*') ? 'active' : '' }}" aria-current="page" href="{{ route('teacher.recap') }}">
+                      <i class="bi bi-file-earmark-text"></i>Rekap
+                    </a>
                   </li>
                 </div>
               </div>
@@ -91,7 +109,7 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
               <button class="dropdown-item">{{ auth()->user()->name }}</button>
-              <form action="/logout" method="post">
+              <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <button type="submit" class="dropdown-item">Logout</button>
               </form>

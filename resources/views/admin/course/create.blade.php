@@ -8,7 +8,7 @@
     <div class="container-fluid card shadow-lg">
       <div class="row mt-3">
         <div class="col-2">
-          <a href="mapel.html"
+          <a href="{{ route('admin.course.index') }}"
             ><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button>
           </a>
         </div>
@@ -26,7 +26,7 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             <div class="login-box my-4">
-              <form action="/admin/course" method="post">
+              <form action="{{ route('admin.course.store') }}" method="post">
                 @csrf
                 <h4 class="mb-4 text-center">Mapel</h4>
                 <div class="user-box">

@@ -67,7 +67,8 @@ class TeacherController extends Controller
             "gender" => $validated["gender"],
         ];
         Teacher::create($new_teacher);
-        return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Tambahkan");
+        // return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Tambahkan");
+        return redirect()->route('admin.teacher.index')->with("success", "Guru Berhasil Ditambahkan");
     }
 
     /**
@@ -138,7 +139,8 @@ class TeacherController extends Controller
             "gender" => $validated["gender"],
         ];
         $teacher->update($update_teacher);
-        return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Update");
+        // return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Update");
+        return redirect()->route('admin.teacher.index')->with("success", "Guru Berhasil Diedit");
     }
 
     /**
@@ -155,6 +157,7 @@ class TeacherController extends Controller
         }
         $teacher->user->delete();
         $teacher->delete();
-        return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Hapus");
+        // return redirect('/admin/teacher')->with('success', "Guru Berhasil Di Hapus");
+        return redirect()->route('admin.teacher.index')->with("success", "Guru Berhasil Dihapus");
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @push('script')
-  <script src="/js/create-semester.js"></script>
+  <script src="{{ asset('js/create-semester.js') }}"></script>
 @endpush
 
 @section('body')
@@ -12,7 +12,9 @@
     <div class="container-fluid card shadow-lg">
       <div class="row mt-3">
         <div class="col-2">
-          <a href="semester.html"> <button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button></a>
+          <a href="{{ route('admin.semester.index') }}">
+            <button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button>
+          </a>
         </div>
         <div class="col-md-12 text-center">
           <h3>Tambahkan Semester</h3>
@@ -28,7 +30,7 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             <div class="login-box">
-              <form action="/admin/semester" method="POST">
+              <form action="{{ route('admin.semester.store') }}" method="POST">
                 @csrf
                 <h4 class="mb-4 text-center mt-3">Semester</h4>
                 <div>

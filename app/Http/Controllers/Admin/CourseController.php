@@ -64,7 +64,8 @@ class CourseController extends Controller
                 "student_id" => $student_id,
             ]);
         }
-        return redirect('/admin/course')->with('success', "Mata Pelajaran Berhasil Di Tambahkan");;
+        // return redirect('/admin/course')->with('success', "Mata Pelajaran Berhasil Di Tambahkan");;
+        return redirect()->route('admin.course.index')->with("success", "Mata Pelajaran Berhasil Di Tambahkan");
     }
 
     /**
@@ -130,7 +131,8 @@ class CourseController extends Controller
             }
         }
 
-        return redirect('/admin/course')->with('success', "Mata Pelajaran Berhasil Di Update");
+        // return redirect('/admin/course')->with('success', "Mata Pelajaran Berhasil Di Update");
+        return redirect()->route('admin.course.index')->with("success", "Mata Pelajaran Berhasil Diedit");
     }
 
     /**
@@ -146,6 +148,7 @@ class CourseController extends Controller
             CourseStudent::where('course_id', $course->id)->where('student_id', $student_id)->delete();
         }
         $course->delete();
-        return redirect('/admin/course')->with('success', "Mata Pelajaran Berhasil Di Hapus");
+        // return redirect('/admin/course')->with('success', "Mata Pelajaran Berhasil Di Hapus");
+        return redirect()->route('admin.course.index')->with("success", "Mata Pelajaran Berhasil Dihapus");
     }
 }

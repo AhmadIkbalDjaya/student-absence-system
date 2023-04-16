@@ -49,7 +49,8 @@ class ClaassController extends Controller
             "class_name" => "required",
         ]);
         Claass::create($validated);
-        return redirect('/admin/claass')->with('success', "Kelas Berhasil Ditambahkan");
+        // return redirect('/admin/claass')->with('success', "Kelas Berhasil Ditambahkan");
+        return redirect()->route('admin.claass.index')->with("success", "Kelas Berhasil Ditambahkan");
     }
 
     /**
@@ -92,7 +93,9 @@ class ClaassController extends Controller
             "class_name" => "required",
         ]);
         $claass->update($validated);
-        return redirect('/admin/claass')->with('success', "Kelas Berhasil Di Update");
+        // return redirect('/admin/claass')->with('success', "Kelas Berhasil Di Update");
+        return redirect()->route('admin.claass.index')->with("success", "Kelas Berhasil Diedit");
+
     }
 
     /**
@@ -108,6 +111,7 @@ class ClaassController extends Controller
             return back()->with('failed', "Kelas tidak dapat dihapus karena digunakan di $use_count Mata Pelajaran");
         }
         $claass->delete();
-        return redirect('/admin/claass')->with('success', "Kelas Berhasil Dihapus");
+        // return redirect('/admin/claass')->with('success', "Kelas Berhasil Dihapus");
+        return redirect()->route('admin.claass.index')->with("success", "Kelas Berhasil Dihapus");
     }
 }

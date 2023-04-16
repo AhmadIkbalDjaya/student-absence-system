@@ -44,7 +44,9 @@
                     <td>{{ $course->teacher->user->name }}</td>
                     <td>{{ $course->claass->class_name }}</td>
                     <td>
-                      <a href="/admin/recap/{{ $course->id }}"><span class="badge text-bg-success">Rekap Mapel</span></a>
+                      <a href="{{ route('admin.recap.course', ['course' => $course->id]) }}">
+                        <span class="badge text-bg-success">Rekap Mapel</span>
+                      </a>
                     </td>
                   </tr>
                 @endforeach

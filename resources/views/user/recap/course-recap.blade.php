@@ -109,7 +109,7 @@
         </div>
         <div class="button mb-3">
           <button type="button" class="btn btn-primary btn-sm">
-            <a href="/recap/print/course/{{ $course->id }}" target="_blank" class="text-white fw-bolder">
+            <a href="{{ route('print.recap', ['course' => $course->id]) }}" target="_blank" class="text-white fw-bolder">
               <i class="bi bi-printer pe-1" style="font-size: 20px"></i>Cetak
             </a>
           </button>

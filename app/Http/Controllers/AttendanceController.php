@@ -60,7 +60,8 @@ class AttendanceController extends Controller
                 "status" => "0"
             ]);
         }
-        return redirect("/class/course/$course->id");
+        // return redirect("/class/course/$course->id");
+        return redirect()->route('teacher.attendance', ["course" => $course->id]);
     }
 
     public function attendance(Course $course, Attendance $attendance)
@@ -106,6 +107,7 @@ class AttendanceController extends Controller
             // $alpa_students = Student::whereIn('id', $alpa_students_id)->get();
             // dd($alpa_students);
         }   
-        return redirect("/class/course/$course->id");
+        // return redirect("/class/course/$course->id");
+        return redirect()->route('teacher.attendance', ["course" => $course->id]);
     }
 }

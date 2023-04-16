@@ -22,14 +22,14 @@
     <div class="container">
       <div class="row card shadow my-3 p-4">
         <div class="col-2 mb-3">
-          <a href="/admin/student"
+          <a href="{{ route('admin.student.index') }}"
             ><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button
           ></a>
         </div>
         <div class="col-md-12 card-header">
           <h4>Edit Siswa</h4>
         </div>
-        <form action="/admin/student/{{ $student->id }}" method="post" class="p-0 m-0">
+        <form action="{{ route('admin.student.update', ['student' => $student->id]) }}" method="post" class="p-0 m-0">
           @method("patch")
           @csrf
           <div class="col-md-12">

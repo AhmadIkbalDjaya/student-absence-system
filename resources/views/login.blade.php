@@ -26,7 +26,7 @@
           <div class="col-11 col-md-5">
             <div class="login-box">
               <p>Login</p>
-              <form action="/login" method="post">
+              <form action="{{ route('login.store') }}" method="post">
                 @csrf
                 <div class="user-box">
                   <input required="" name="username" type="text" />

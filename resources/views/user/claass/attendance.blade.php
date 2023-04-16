@@ -58,7 +58,7 @@
           </table>
         </div>
       </div>
-      <form action="/class/course/{{ $course->id }}/attendance/{{ $attendance->id }}" method="post">
+      <form action="{{ route('teacher.student.attendance.store', ['course' => $course->id, 'attendance' => $attendance->id]) }}" method="post">
         @csrf
         <div class="row">
           <div class="col-md-12">

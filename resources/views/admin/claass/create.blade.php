@@ -8,7 +8,9 @@
     <div class="container-fluid card shadow-lg">
       <div class="row mt-3">
         <div class="col-2">
-          <a href="kelas.html"><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button></a>
+          <a href="{{ route('admin.claass.index') }}">
+            <button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button>
+          </a>
         </div>
         <div class="col-md-12 text-center">
           <h3>Tambah Kelas</h3>
@@ -24,7 +26,7 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             <div class="login-box my-4">
-              <form action="/admin/claass" method="post">
+              <form action="{{ route('admin.claass.store') }}" method="post">
                 @csrf
                 <h4 class="mb-4 text-center">Kelas</h4>
                 <div>
