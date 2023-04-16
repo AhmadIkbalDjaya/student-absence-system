@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row shadow p-5 justify-content-center">
         <div class="col-4 col-md-1">
-          <div><img src="/images/logo.png" alt="img" class="rounded-circle img-fluid" /></div>
+          <div><img src="{{ asset('images/logo.png') }}" alt="img" class="rounded-circle img-fluid" /></div>
         </div>
         <div class="col-md-11 text-center">
           <h3>Informasi</h3>

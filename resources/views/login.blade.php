@@ -14,7 +14,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-6 col-md-2 mt-5">
-            <img src="/images/logo.png" alt="image" class="img-fluid" />
+            <img src="{{ asset('images/logo.png') }}" alt="image" class="img-fluid" />
           </div>
         </div>
         <div class="row justify-content-center">
