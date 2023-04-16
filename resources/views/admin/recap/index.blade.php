@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @push('style')
-    <link rel="stylesheet" href="/css/course-index.css">
+    <link rel="stylesheet" href="{{ asset('css/course-index.css') }}" />
 @endpush
 
 @section('body')
