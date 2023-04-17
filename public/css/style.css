@@ -17,6 +17,7 @@
   background-image: url('../images/bg-header.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 #offcanvasNavbar {
   width: 30%;
@@ -137,4 +138,5 @@ a {
   background-color: rgba(0, 0, 0, 0.432);
   background-blend-mode: multiply;
   background-image: url('../images/bg-dashboard.jpg');
+  background-position: center;
 }

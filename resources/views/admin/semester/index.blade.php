@@ -50,9 +50,9 @@
             <thead>
               <tr>
                 <th class="col-md-0">No</th>
-                <th class="col-md-4">Tahun Ajaran</th>
+                <th class="col-md-4" style="white-space: nowrap">Tahun Ajaran</th>
                 <th class="col-md-2">Semester</th>
-                <th class="col-md-2">Status</th>
+                <th class="col-md-2" style="white-space: nowrap">Status</th>
                 <th class="col-md-4">Action</th>
               </tr>
             </thead>
@@ -60,7 +60,7 @@
               @foreach ($semesters as $semester)
                 <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
-                  <td>{{ $semester->start_year }}/{{ $semester->end_year }}</td>
+                  <td style="white-space: nowrap">{{ $semester->start_year }}/{{ $semester->end_year }}</td>
                   <td>
                     @if ($semester->odd_even == 1)
                       Ganjil  
@@ -68,7 +68,7 @@
                       Genap
                     @endif
                   </td>
-                  <td>
+                  <td style="white-space: nowrap">
                     @if ($semester->is_active == 1)
                       <i class="fa fa-check text-success"></i> Aktif
                     @else

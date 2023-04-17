@@ -35,7 +35,7 @@
               <thead>
                 <tr>
                   <th class="col-md-0">No</th>
-                  <th class="col-md-3">Mata Pelajaran</th>
+                  <th class="col-md-3" style="white-space: nowrap">Mata Pelajaran</th>
                   <th class="col-md-3">Guru</th>
                   <th class="col-md-1">Kelas</th>
                   <th class="col-md-4">Action</th>
@@ -45,7 +45,7 @@
                 @foreach ($courses as $course)
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $course->course_name }}</td>
+                    <td style="white-space: nowrap">{{ $course->course_name }}</td>
                     <td>{{ $course->teacher->user->name }}</td>
                     <td>{{ $course->claass->class_name }}</td>
                     <td class="d-flex justify-content-center">

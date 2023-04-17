@@ -32,7 +32,7 @@
                 <tr>
                   <th class="col-md-0">No.</th>
                   <th class="col-md-4">NISN</th>
-                  <th class="col-md-4">Nama</th>
+                  <th class="col-md-4" style="white-space: nowrap">Nama</th>
                   <th class="col-md-4">Action</th>
                 </tr>
               </thead>
@@ -41,7 +41,7 @@
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $student->nis }}</td>
-                    <td>{{ $student->name }}</td>
+                    <td style="white-space: nowrap">{{ $student->name }}</td>
                     <td class="d-flex justify-content-center">
                       <a href="{{ route('admin.student.show', ['student' => $student->id]) }}">
                         <span class="badge text-bg-info me-1">Informasi</span>

@@ -58,8 +58,8 @@ class DatabaseSeeder extends Seeder
 
         // User & Teacher
         User::create([
-            "username" => "admin",
-            "password" => bcrypt("password"),
+            "username" => "sman17gowa",
+            "password" => bcrypt("17gowa12345"),
             "name" => "Administrator",
             "email" => "admin@gmail.com",
             "level" => "1",

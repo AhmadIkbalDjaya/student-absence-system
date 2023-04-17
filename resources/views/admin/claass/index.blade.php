@@ -32,7 +32,7 @@
               <thead>
                 <tr>
                   <th class="col-md-0">No</th>
-                  <th class="col-md-3">Nama Kelas</th>
+                  <th class="col-md-3" style="white-space: nowrap">Nama Kelas</th>
                   <th class="col-md-3">Kelas</th>
                   <th class="col-md-1">Jurusan</th>
                   <th class="col-md-4">Action</th>
@@ -42,7 +42,7 @@
                 @foreach ($claasses as $claass)
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $claass->class_name }}</td>
+                    <td style="white-space: nowrap">{{ $claass->class_name }}</td>
                     <td>{{ $claass->class_level }}</td>
                     <td>{{ $claass->major }}</td>
                     <td class="d-flex justify-content-center">
