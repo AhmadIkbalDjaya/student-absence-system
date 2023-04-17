@@ -107,17 +107,17 @@ class DatabaseSeeder extends Seeder
         // Student
         Student::create([
             "claass_id" => "1",
-            "name" => "Agung Umar",
+            "name" => "Kezia",
             "nis" => "001",
             "gender" => "Laki-laki",
-            "parent_phone" => "0812313123",
+            "parent_phone" => "081241250245",
         ]);
         Student::create([
             "claass_id" => "1",
-            "name" => "Wahyuni Umar",
+            "name" => "Syalahuddin",
             "nis" => "002",
             "gender" => "Perempuan",
-            "parent_phone" => "0812313123",
+            "parent_phone" => "081241250245",
         ]);
         Student::create([
             "claass_id" => "2",

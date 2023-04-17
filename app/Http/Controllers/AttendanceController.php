@@ -102,12 +102,52 @@ class AttendanceController extends Controller
             "is_filled" => "1",
         ]);
         // mengambil id student yg alpa jika ada yg alpa
+        $alpa_students = [];
         if (isset($alpa_students_id)) {
             // dd($alpa_students_id);
-            // $alpa_students = Student::whereIn('id', $alpa_students_id)->get();
+            $alpa_students = Student::whereIn('id', $alpa_students_id)->get();
             // dd($alpa_students);
-        }   
-        // return redirect("/class/course/$course->id");
+        }
+        // $target = "081241250245";
+        foreach ($alpa_students as $index => $student) {
+            // echo ($student->parent_phone);
+            // echo ($student->name);
+            // echo ($course->course_name);
+            $this->sendWhatsapp($student->parent_phone, $student->name, $course->course_name);
+        }
+        // $this->sendWhatsapp($target);
+
+
         return redirect()->route('teacher.attendance', ["course" => $course->id]);
+    }
+
+    public function sendWhatsapp($target, $student_name, $course_name)
+    {
+        $token = "virt3g+Lf3VTy4jq!W2J";
+        $curl = curl_init();
+        $message = "Assalamu'alaikum Bapak/Ibu, ini pesan dari SMAN 17 GOWA untuk memberitahukan bahwa $student_name anak bapak/ibu tidak hadir dalam pelajaran $course_name hari ini. Mohon maaf atas ketidaknyamanan ini. Terima kasih.";
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://api.fonnte.com/send',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+        'target' => $target,
+        'message' => "$message", 
+        'countryCode' => '62', //optional
+        ),
+        CURLOPT_HTTPHEADER => array(
+            "Authorization: $token" //change TOKEN to your actual token
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
     }
 }
