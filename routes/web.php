@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminRecapContoller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RecapController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Admin\ClaassController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\SemesterController;
-use App\Http\Controllers\RecapController;
+use App\Http\Controllers\Admin\AdminRecapContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +64,5 @@ Route::middleware(['auth', 'teacher'])->group(function () {
 });
 
 Route::get('/recap/print/course/{course}', [RecapController::class, 'print'])->name('print.recap')->middleware('auth');
+Route::resource('about', AboutController::class);
+Route::resource('guide', GuideController::class);

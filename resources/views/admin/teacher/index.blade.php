@@ -27,6 +27,11 @@
   <div class="container-fluid card shadow my-3">
     <div class="row">
       <div class="col-md-12 p-4">
+        @if (count($teachers) == 0)
+          <div class="col-md-12 text-center">
+            <h4>Belum Ada Guru</h4>
+          </div>
+        @else
         <div class="table-responsive">
           <table class="table table-bordered text-center">
             <thead>
@@ -85,6 +90,7 @@
             </tbody>
           </table>
         </div>
+        @endif
       </div>
     </div>
   </div>

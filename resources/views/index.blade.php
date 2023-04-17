@@ -9,7 +9,7 @@
       <div class="row text-center h-100 text-white align-items-center">
         <h1>
           Selamat Datang di Sistem Absensi Siswa <br />
-          SMA Negri 17 Gowa
+          SMA Negeri 17 Gowa
         </h1>
       </div>
     </div>

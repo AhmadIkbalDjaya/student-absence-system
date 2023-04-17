@@ -60,7 +60,6 @@ class AttendanceController extends Controller
                 "status" => "0"
             ]);
         }
-        // return redirect("/class/course/$course->id");
         return redirect()->route('teacher.attendance', ["course" => $course->id]);
     }
 
@@ -88,7 +87,6 @@ class AttendanceController extends Controller
             "id" => "required|array",
             "statuses" => "required|array",
         ]);
-        // dd($validated);
 
         foreach ($validated["id"] as $key => $student_attendance_id) {
             $student_attendance = [];
@@ -104,18 +102,11 @@ class AttendanceController extends Controller
         // mengambil id student yg alpa jika ada yg alpa
         $alpa_students = [];
         if (isset($alpa_students_id)) {
-            // dd($alpa_students_id);
             $alpa_students = Student::whereIn('id', $alpa_students_id)->get();
-            // dd($alpa_students);
         }
-        // $target = "081241250245";
         foreach ($alpa_students as $index => $student) {
-            // echo ($student->parent_phone);
-            // echo ($student->name);
-            // echo ($course->course_name);
             $this->sendWhatsapp($student->parent_phone, $student->name, $course->course_name);
         }
-        // $this->sendWhatsapp($target);
 
 
         return redirect()->route('teacher.attendance', ["course" => $course->id]);

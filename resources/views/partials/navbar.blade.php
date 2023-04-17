@@ -97,6 +97,25 @@
                 </div>
               </div>
               @endif
+              {{-- panduan pengguna & tentang kami --}}
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('guide*') ? 'active' : '' }}" aria-current="page" href="{{ route('guide.index') }}">
+                      <i class="bi bi-question-circle-fill"></i> Panduan Pengguna
+                    </a>
+                  </li>
+                </div>
+              </div>
+              <div class="card mt-2">
+                <div class="container">
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('about*') ? 'active' : '' }}" aria-current="page" href="{{ route('about.index') }}">
+                      <i class="bi bi-info-circle-fill"></i> Tentang Kami
+                    </a>
+                  </li>
+                </div>
+              </div>
             </ul>
           </div>
         </div>
