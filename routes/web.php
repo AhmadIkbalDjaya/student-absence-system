@@ -57,6 +57,7 @@ Route::middleware(['auth', 'teacher'])->group(function () {
     Route::post('/class/course/{course}/attendance', [AttendanceController::class, 'storeAttendance'])->name('teacher.attendance.store');
     Route::get('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'attendance'])->name('teacher.student.attendance');
     Route::post('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'storeStudentAttendance'])->name('teacher.student.attendance.store');
+    Route::delete('/class/course/{course}/attendance/{attendance}', [AttendanceController::class, 'destroyStudentAbsence'])->name('teacher.student.attendance.destroy');
 
     Route::get('/recap', [RecapController::class, 'index'])->name('teacher.recap');
     Route::get('/recap/course/{course}', [RecapController::class, 'courseRecap'])->name('teacher.recap.course');

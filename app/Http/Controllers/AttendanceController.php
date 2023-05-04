@@ -141,4 +141,11 @@ class AttendanceController extends Controller
 
         curl_close($curl);
     }
+
+    public function destroyStudentAbsence(Course $course, Attendance $attendance)
+    {
+        StudentAttendance::where("attendance_id", $attendance->id)->delete();
+        $attendance->delete();
+        return redirect()->route('teacher.attendance', ["course" => $course->id]);
+    }
 }

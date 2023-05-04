@@ -60,13 +60,48 @@
                 <div class="col-10 col-md-11">
                   <p class="fs-5"><i class="bi bi-people"></i>
                     <a href="{{ route('teacher.student.attendance', ['course' => $course->id, 'attendance' => $attendance->id]) }}">
-                       Kehadiran
+                      Kehadiran
                     </a>
                   </p>
                 </div>
                 <div class="col-2 col-md-1">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border-width: 2px" {{ $attendance->is_filled == 1 ? "checked" : "" }}/>
+                    {{-- <form action="{{ route('teacher.student.attendance.destroy', ['course' => $course->id, 'attendance' => $attendance->id]) }}" method="post">
+                      @method('delete')
+                      @csrf
+                      <button type="submit" class="border-0 bg-transparent">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form> --}}
+                    <!-- Button trigger modal delete -->
+                    <a href="" class="" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $course->id }}">
+                      <i class="bi bi-trash"></i>
+                    </a>
+
+                    <!-- Modal delete -->
+                    <div class="modal fade" id="deleteModal{{ $course->id }}" tabindex="-1" aria-labelledby="deleteModal{{ $course->id }}Label" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModal{{ $course->id }}Label">Konfirmasi Hapus</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="{{ route('teacher.student.attendance.destroy', ['course' => $course->id, 'attendance' => $attendance->id]) }}" method="post" class="d-inline">
+                              @method("delete")
+                              @csrf
+                              Yakin Ingin Menghapus {{ $attendance->attendance_title }}
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                              <button class="btn btn-danger text-bg-danger border-0">Delete</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

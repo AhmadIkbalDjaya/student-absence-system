@@ -8,7 +8,7 @@
     <div class="container-fluid card shadow">
       <div class="row p-3">
         <div class="col-2">
-          <a href="panduanPengguna.html"
+          <a href="{{ route('guide.index') }}"
             ><button type="button" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i></button
           ></a>
         </div>
