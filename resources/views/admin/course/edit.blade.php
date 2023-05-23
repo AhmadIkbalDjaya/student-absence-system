@@ -80,6 +80,9 @@
                         @else
                           (Genap)
                         @endif
+                        @if ($semester->is_active == 1)
+                          &#10004;
+                        @endif
                       </option>
                     @endforeach
                   </select>

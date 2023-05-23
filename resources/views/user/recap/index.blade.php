@@ -72,7 +72,7 @@
                     <div>
                       @foreach ($claass->course as $userCourse)
                           @if ($userCourse->teacher_id == auth()->user()->teacher->id && $userCourse->semester_id == $active_semester_id)
-                            <a href="{{ route('teacher.attendance', ['course' => $userCourse->id]) }}" class="btn btn-success d-block mb-3">
+                            <a href="{{ route('teacher.recap.course', ['course' => $userCourse->id]) }}" class="btn btn-success d-block mb-3">
                               {{ $userCourse->course_name }}
                             </a>
                           @endif

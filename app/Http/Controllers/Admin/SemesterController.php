@@ -102,7 +102,7 @@ class SemesterController extends Controller
      */
     public function destroy(Semester $semester)
     {
-        $use_count = Course::where("claass_id", $semester->id)->count();
+        $use_count = Course::where("semester_id", $semester->id)->count();
         if($use_count > 0){
             return back()->with('failed', "Semester tidak dapat dihapus karena digunakan");
         }

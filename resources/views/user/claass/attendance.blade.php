@@ -26,7 +26,7 @@
               <tr>
                 <td>Jumlah Siswa</td>
                 <td>:</td>
-                <td>{{ count($students) }}</td>
+                <td>{{ $studentsCount }}</td>
               </tr>
               <tr>
                 <td>Tanggal</td>

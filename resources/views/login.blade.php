@@ -25,16 +25,29 @@
         <div class="row justify-content-center">
           <div class="col-11 col-md-5">
             <div class="login-box">
-              <p>Login</p>
+              <p class="m-0">Login</p>
+              @if (session()->has('loginError'))
+                <p class="text-danger text-center">{{ session('loginError') }}</p>
+              @endif
               <form action="{{ route('login.store') }}" method="post">
                 @csrf
                 <div class="user-box">
-                  <input required="" name="username" type="text" />
-                  <label>Email</label>
+                  <input required="" name="username" type="text" class="@error('username') is-invalid @enderror" value="{{ old("username") }}"/>
+                  <label>NIP / Username</label>
+                  @error('username')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 <div class="user-box">
-                  <input required="" name="password" type="password" />
+                  <input required="" name="password" type="password" class="@error('password') is-invalid @enderror"/>
                   <label>Password</label>
+                  @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 <button type="submit">
                   <span></span>

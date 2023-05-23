@@ -70,10 +70,10 @@ class AttendanceController extends Controller
         $student_attendances = StudentAttendance::where("attendance_id", $attendance->id)->get();
         $students_id = CourseStudent::where('course_id', $course->id)->pluck('student_id');
         $students = Student::whereIn('id', $students_id)->get();
-        
         return view("user.claass.attendance", [
             "title" => "Absen Kehadiran",
-            "students" => $students,
+            // "studentsCount" => $students->count(),
+            "studentsCount" => $student_attendances->count(),
             "course" => $course,
             "attendance" => $attendance,
             "student_attendaces" => $student_attendances,
