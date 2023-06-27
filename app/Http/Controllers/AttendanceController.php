@@ -114,7 +114,7 @@ class AttendanceController extends Controller
 
     public function sendWhatsapp($target, $student_name, $course_name)
     {
-        $token = "virt3g+Lf3VTy4jq!W2J";
+        $token = "7b7@DzAM3UGdwNMg#U1i";
         $curl = curl_init();
         $message = "Assalamu'alaikum Bapak/Ibu, ini pesan dari SMAN 17 GOWA untuk memberitahukan bahwa $student_name anak bapak/ibu tidak hadir dalam pelajaran $course_name hari ini. Mohon maaf atas ketidaknyamanan ini. Terima kasih.";
 
